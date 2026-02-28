@@ -1,6 +1,6 @@
 import { useState, memo } from "react";
 
-function likeButton({ name }) {
+function LikeButton({ name }) {
     const [likes, setLikes] = useState(0);
 
     console.log("Render:", name);
@@ -15,4 +15,4 @@ function likeButton({ name }) {
     );
 }
 
-export default memo(likeButton);
+export default memo(LikeButton);
