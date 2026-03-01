@@ -13,7 +13,7 @@ const Pokemon = (props) => {
                 />
             </div>
             <div class="">
-                <h4>{props.names}</h4>
+                <h4>{props.name}</h4>
                 <p class="text-muted">{props.type}</p>
             </div>
             </div>
