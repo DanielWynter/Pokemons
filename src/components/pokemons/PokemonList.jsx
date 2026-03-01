@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Pokemon from "./Pokemon";
 import AgregarPokemon from "../operations/AgregarPokemon"; // 1. Importas el nuevo archivo
+import RevertirLista from "../operations/RevertirLista";
 
 const PokemonsList = () => {
     // Agregué 'setPokemons' para poder actualizar la lista
@@ -30,10 +31,20 @@ const PokemonsList = () => {
         setPokemons([...pokemons, nuevo]);
     };
 
+    // Revertir orden de lista
+    const revertirOrden = () => {
+        const copiaDeLista = [...pokemons]; //Copiar lista para no modificar original
+        const listaVolteada = copiaDeLista.reverse(); //voltear copia de lista
+        setPokemons(listaVolteada); //actualizar con lista volteada
+    };
+
     return (
         <div className="row">
             {/* 3. Colocamos el formulario y le pasamos la función */}
             <AgregarPokemon alAgregar={agregarNuevoPokemon} />
+
+            {/* Boton para voltear pokemones */}
+            <RevertirLista alRevertir={revertirOrden} />
 
             {pokemons.map((pokemon) => {
                 return (
