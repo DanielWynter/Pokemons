@@ -21,7 +21,7 @@ const EliminarPokemon = ({ alEliminar }) => {
             <input
                 value={identificador}
                 onChange={(e) => setIdentificador(e.target.value)}
-                placeholder="ID o nombre a eliminar"
+                placeholder="Nombre de Pokémon a eliminar"
             />
             <button onClick={manejarEliminacion}>Eliminar Pokémon</button>
         </div>

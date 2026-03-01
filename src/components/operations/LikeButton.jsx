@@ -5,6 +5,7 @@ function LikeButton({ name }) {
 
     console.log("Render:", name);
 
+    //Setear likes +1 para incrementarlos
     return (
         <li>
         {name} ❤️ {likes}
