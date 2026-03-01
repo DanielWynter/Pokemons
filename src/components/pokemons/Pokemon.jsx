@@ -1,25 +1,40 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Pokemon = (props) => {
+const Pokemon = ({ id, name, img, type, likes, onLike }) => {
+
+    console.log("Render:", name); // Para demostrar optimización
+
     return (
-        <div class="col-lg-4">
-        <div class="text-center card-box">
-            <div class="member-card pt-2 pb-2">
-            <div class="thumb-lg member-thumb mx-auto">
-                <img
-                src={props.img}
-                class="rounded-circle img-thumbnail"
-                alt="profile-image"
-                />
+        <div className="col-lg-4">
+            <div className="text-center card-box">
+                <div className="member-card pt-2 pb-2">
+                    
+                    <div className="thumb-lg member-thumb mx-auto">
+                        <img
+                            src={img}
+                            className="rounded-circle img-thumbnail"
+                            alt={name}
+                        />
+                    </div>
+
+                    <div>
+                        <h4>{name}</h4>
+                        <p className="text-muted">{type}</p>
+
+                        <p>❤️ Likes: {likes}</p>
+
+                        <button 
+                            className="btn btn-danger"
+                            onClick={() => onLike(id)}
+                        >
+                            Me gusta
+                        </button>
+                    </div>
+
+                </div>
             </div>
-            <div class="">
-                <h4>{props.name}</h4>
-                <p class="text-muted">{props.type}</p>
-            </div>
-            </div>
-        </div>
         </div>
     );
 };
 
-export default Pokemon;
+export default memo(Pokemon);
