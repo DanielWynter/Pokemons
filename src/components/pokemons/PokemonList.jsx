@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Pokemon from "./Pokemon";
+import AgregarPokemon from "../operations/AgregarPokemon"; // 1. Importas el nuevo archivo
 
 const PokemonsList = () => {
-    const [pokemons, setpokemons] = useState([
+    // Agregué 'setPokemons' para poder actualizar la lista
+    const [pokemons, setPokemons] = useState([
         {
         id: 1,
         name: "Charmander ",
@@ -23,18 +25,26 @@ const PokemonsList = () => {
         },
     ]);
 
+    // 2. Esta función recibe el nuevo pokemon desde el formulario y lo guarda
+    const agregarNuevoPokemon = (nuevo) => {
+        setPokemons([...pokemons, nuevo]);
+    };
+
     return (
         <div className="row">
-        {pokemons.map((pokemon, index) => {
-            return (
-            <Pokemon
-                key={pokemon.index}
-                name={pokemon.name}
-                image={pokemon.img}
-                type={pokemon.type}
-                />
-            );
-        })}
+            {/* 3. Colocamos el formulario y le pasamos la función */}
+            <AgregarPokemon alAgregar={agregarNuevoPokemon} />
+
+            {pokemons.map((pokemon) => {
+                return (
+                <Pokemon
+                    key={pokemon.id}
+                    name={pokemon.name}
+                    img={pokemon.img}
+                    type={pokemon.type}
+                    />
+                );
+            })}
         </div>
     );
 };

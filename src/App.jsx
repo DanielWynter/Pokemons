@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Contador />
-        {/*<PokemonList />*/}
+        {/*<Contador />*/}
+        <PokemonList />
       </div>
     </div>
   );
