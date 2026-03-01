@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Pokemon from "./Pokemon";
 import AgregarPokemon from "../operations/AgregarPokemon";
+import AgregarPokemon from "../operations/AgregarPokemon"; // 1. Importas el nuevo archivo
+import RevertirLista from "../operations/RevertirLista";
 
 const PokemonsList = () => {
 
@@ -44,11 +46,23 @@ const PokemonsList = () => {
         );
     };
 
+    // Revertir orden de lista
+    const revertirOrden = () => {
+        const copiaDeLista = [...pokemons]; //Copiar lista para no modificar original
+        const listaVolteada = copiaDeLista.reverse(); //voltear copia de lista
+        setPokemons(listaVolteada); //actualizar con lista volteada
+    };
+
     return (
         <div className="row">
             <AgregarPokemon alAgregar={agregarNuevoPokemon} />
 
             {pokemons.map((pokemon) => (
+            {/* Boton para voltear pokemones */}
+            <RevertirLista alRevertir={revertirOrden} />
+
+            {pokemons.map((pokemon) => {
+                return (
                 <Pokemon
                     key={pokemon.id}
                     id={pokemon.id}
